@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tunaikita.log">
+
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application>
+        <activity android:name=".module.httplog.HttpLogActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".module.httplog.HttpLogDetailsActivity" />
+    </application>
+</manifest>

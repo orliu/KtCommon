@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_16">
+
+
+        <TextView
+            android:id="@+id/id_dialog_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/dp_4"
+            android:text="content"
+            android:textSize="@dimen/font_16"
+            android:textColor="#323232"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/divider"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/id_dialog_negative"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_48"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_cancel"
+            android:textColor="#b4b4b4"
+            android:text="@string/cancel"/>
+
+        <View
+            android:id="@+id/id_dialog_button_divider"
+            android:layout_width="0.5dp"
+            android:layout_height="@dimen/dp_48"
+            android:background="@drawable/divider"/>
+
+        <Button
+            android:id="@+id/id_dialog_positive"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_48"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_confirm"
+            android:text="@string/confirm"
+            android:textColor="#4187f5"/>
+
+    </LinearLayout>
+</LinearLayout>
