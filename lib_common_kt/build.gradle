@@ -27,6 +27,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
@@ -46,4 +50,5 @@ dependencies {
 
     // other
     compile "com.google.code.gson:gson:$gsonVersion"
+    compile 'com.google.zxing:core:3.3.1'
 }

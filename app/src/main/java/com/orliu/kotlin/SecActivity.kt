@@ -11,11 +11,13 @@ import kotlinx.android.synthetic.main.activity_sec.*
 class SecActivity : BaseActivity() {
     override fun getTitleStr(): String? = "SecActivity Page"
 
-    private var key: String? = null
+    private var key: String? = ""
     override fun getLayoutId(): Int = R.layout.activity_sec
 
     override fun initBundleArgs() {
-        intent.extras["key"]?.let { key = it.toString() }
+        intent.extras?.let {
+            it["key"]?.let { key = it.toString() }
+        }
     }
 
     override fun initDataOnStart() {

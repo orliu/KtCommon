@@ -2,7 +2,7 @@ package com.orliu.kotlin.common.dialog
 
 import android.os.Bundle
 import com.orliu.kotlin.common.R
-import com.tunaikita.log.base.BaseDialog
+import com.orliu.kotlin.common.base.BaseDialog
 import kotlinx.android.synthetic.main.dialog_window_loading.*
 
 /**

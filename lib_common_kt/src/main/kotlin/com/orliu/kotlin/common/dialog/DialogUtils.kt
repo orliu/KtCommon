@@ -1,7 +1,7 @@
 package com.orliu.kotlin.common.dialog
 
 import android.support.v4.app.FragmentManager
-import com.tunaikita.log.base.BaseDialog
+import com.orliu.kotlin.common.base.BaseDialog
 
 /**
  * Created by liujianping on 18/01/2018.
@@ -11,7 +11,7 @@ object DialogUtils {
 
     @JvmStatic
     fun showLoading(manager: FragmentManager, loadingText: String) {
-        val dialog = WindowLoadingDialog.instance(loadingText)
+        val dialog: BaseDialog = WindowLoadingDialog.instance(loadingText) as BaseDialog
         showAllowingStateLoss(dialog, manager, "windowloadingdialog")
         dialogs.add(dialog)
     }

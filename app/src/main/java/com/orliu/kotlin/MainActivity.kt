@@ -1,11 +1,15 @@
 package com.orliu.kotlin
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.orliu.kotlin.base.BaseActivity
+import com.orliu.kotlin.common.extension.android.startActivity
 import com.orliu.kotlin.common.view.rv.ItemViewDelegate
 import com.orliu.kotlin.common.view.rv.RecyclerAdapter
 import com.orliu.kotlin.common.view.rv.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity() {
     private lateinit var mAdapter: RecyclerAdapter<String>
@@ -26,6 +30,10 @@ class MainActivity : BaseActivity() {
         rv.layoutManager = manager
         rv.adapter = mAdapter
         mAdapter.addItemViewDelegate(NormalItemViewDelegate())
+
+        supportFragmentManager.beginTransaction()
+                .add(R.id.container, TestFragment(), "asfa")
+                .commitAllowingStateLoss()
     }
 
     override fun syncDataOnResume() {
@@ -42,6 +50,9 @@ class MainActivity : BaseActivity() {
 
         override fun convert(holder: ViewHolder, t: String, position: Int) {
             holder.withView(R.id.tv).setText(t)
+
+            holder.itemView.setOnClickListener({
+            })
         }
 
     }

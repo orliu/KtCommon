@@ -1,4 +1,4 @@
-package com.tunaikita.log.base
+package com.orliu.kotlin.common.base
 
 import android.app.Dialog
 import android.content.DialogInterface

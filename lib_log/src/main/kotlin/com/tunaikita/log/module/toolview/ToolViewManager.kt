@@ -7,7 +7,7 @@ import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
-import com.orliu.kotlin.common.extension.android.targetActivity
+import com.orliu.kotlin.common.extension.android.startActivity
 import com.orliu.kotlin.common.tools.screenHeightPixels
 import com.orliu.kotlin.common.tools.screenWidthPixels
 import com.tunaikita.log.module.httplog.HttpLogActivity
@@ -100,7 +100,7 @@ object ToolViewManager {
                         if (Math.abs(x - xTemp) < 6 && Math.abs(y - yTemp) < 6) {
 
                             // 较小的移动范围，视为click事件
-                            context?.targetActivity<HttpLogActivity>(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            context?.startActivity<HttpLogActivity>(Intent.FLAG_ACTIVITY_NEW_TASK)
                         } else {
 
                             // 拖动
