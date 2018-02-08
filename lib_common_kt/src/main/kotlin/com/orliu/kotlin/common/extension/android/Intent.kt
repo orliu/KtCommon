@@ -11,26 +11,26 @@ import android.support.v4.app.FragmentActivity
 import android.text.TextUtils
 
 // for java caller
-inline fun Context.startActivity(clazz: Class<*>) {
+fun Context.targetActivity(clazz: Class<*>) {
     val intent = Intent()
     intent.setClass(this, clazz)
     startActivity(intent)
 }
 
-inline fun FragmentActivity.startActivity(clazz: Class<*>) {
+fun FragmentActivity.startActivity(clazz: Class<*>) {
     val intent = Intent()
     intent.setClass(this, clazz)
     startActivity(intent)
 }
 
-inline fun Context.startActivity(clazz: Class<*>, bundle: Bundle) {
+fun Context.targetActivity(clazz: Class<*>, bundle: Bundle) {
     val intent = Intent()
     intent.setClass(this, clazz)
     intent.putExtras(bundle)
     startActivity(intent)
 }
 
-inline fun FragmentActivity.startActivity(clazz: Class<*>, bundle: Bundle) {
+fun FragmentActivity.startActivity(clazz: Class<*>, bundle: Bundle) {
     val intent = Intent()
     intent.setClass(this, clazz)
     intent.putExtras(bundle)
@@ -42,7 +42,7 @@ inline fun FragmentActivity.startActivity(clazz: Class<*>, bundle: Bundle) {
 /**
  * for component
  */
-inline fun Context.startActivity(component: String) {
+fun Context.startActivity(component: String) {
     val intent = Intent()
     intent.setClassName(this, component)
     startActivity(intent)
@@ -53,14 +53,14 @@ inline fun Fragment.startActivity(component: String) = activity.startActivity(co
 /**
  * for component with flag
  */
-inline fun Context.startActivity(component: String, flag: Int) {
+fun Context.startActivity(component: String, flag: Int) {
     val intent = Intent()
     intent.setClassName(this, component)
     intent.flags = flag
     startActivity(intent)
 }
 
-inline fun Fragment.startActivity(component: String, flag: Int)  = activity.startActivity(component, flag)
+inline fun Fragment.startActivity(component: String, flag: Int) = activity.startActivity(component, flag)
 
 /**
  * for A:FragmentActivity with flag
@@ -85,12 +85,12 @@ inline fun <reified A : FragmentActivity> Context.startActivity(bundle: Bundle, 
     startActivity(intent)
 }
 
-inline fun <reified A : FragmentActivity> Fragment.startActivity(bundle: Bundle, flag: Int)  = activity.startActivity<A>(bundle, flag)
+inline fun <reified A : FragmentActivity> Fragment.tartActivity(bundle: Bundle, flag: Int) = activity.startActivity<A>(bundle, flag)
 
 /**
  * for startActivityForResult with component
  */
-inline fun FragmentActivity.startActivityForResult(component: String, requestCode: Int, bundle: Bundle?) {
+fun FragmentActivity.startActivityForResult(component: String, requestCode: Int, bundle: Bundle?) {
     val intent = Intent()
     intent.setClassName(this, component)
     bundle?.let { intent.putExtras(it) }
@@ -102,7 +102,7 @@ inline fun FragmentActivity.startActivityForResult(component: String, requestCod
  *
  * @param url
  */
-inline fun Context.targetUrl(url: String) {
+fun Context.targetUrl(url: String) {
     var url = url
     if (TextUtils.isEmpty(url))
         throw IllegalArgumentException("url is null")
@@ -131,6 +131,8 @@ fun Activity.openContactAction(requestCode: Int) {
     }
 }
 
+inline fun Fragment.openContactAction(requestCode: Int) = activity.openContactAction(requestCode)
+
 /**
  * for call view
  */
@@ -140,7 +142,7 @@ fun Context.makeCall(phone: String) {
     startActivity(intent)
 }
 
-fun Fragment.makeCall(phone: String) = activity.makeCall(phone)
+inline fun Fragment.makeCall(phone: String) = activity.makeCall(phone)
 
 /**
  * 跳转到Google play
@@ -163,6 +165,8 @@ fun Context.targetGooglePlay(url: String) {
     startActivity(play)
 }
 
+inline fun Fragment.targetGooglePlay(url: String) = activity.targetGooglePlay(url)
+
 // 打开新邮件页面
 fun Activity.openEmailPage(email: String, title: String, content: String) {
     try {
@@ -177,3 +181,4 @@ fun Activity.openEmailPage(email: String, title: String, content: String) {
         e.printStackTrace()
     }
 }
+inline fun Fragment.openEmailPage(email: String, title: String, content: String) = activity.openEmailPage(email, title, content)

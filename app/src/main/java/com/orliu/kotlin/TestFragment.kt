@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.orliu.kotlin.common.extension.android.startActivity
+import com.tunaikita.log.LogSDK
 import kotlinx.android.synthetic.main.fragment_test.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
@@ -24,7 +25,8 @@ class TestFragment : Fragment() {
         super.onResume()
 
         id_button.onClick {
-            startActivity<SecActivity>(Intent.FLAG_ACTIVITY_NEW_TASK)
+            //startActivity<SecActivity>(Intent.FLAG_ACTIVITY_NEW_TASK)
+            LogSDK.close()
         }
     }
 }

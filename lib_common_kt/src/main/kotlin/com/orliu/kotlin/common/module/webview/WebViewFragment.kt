@@ -26,8 +26,8 @@ class WebViewFragment : DialogFragment() {
 
     private lateinit var webview: WebView
     private lateinit var url: String
-    private lateinit var engine: BaseWebviewClientEngine
-    private lateinit var listener: OnLoadingListenerAdapter
+    private var engine: CustomerClientEngine? = null
+    private var listener: OnLoadingListenerAdapter? = null
 
     companion object {
 
@@ -45,7 +45,7 @@ class WebViewFragment : DialogFragment() {
         return this
     }
 
-    fun engine(engine: BaseWebviewClientEngine): WebViewFragment {
+    fun engine(engine: CustomerClientEngine): WebViewFragment {
         this.engine = engine
         return this
     }
@@ -150,7 +150,7 @@ class WebViewFragment : DialogFragment() {
         webview.webViewClient = object : WebViewClient() {
 
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                listener?.let { listener.shouldOverrideUrlLoading(view, url) }
+                listener?.let { it.shouldOverrideUrlLoading(view, url) }
                 return false
             }
 

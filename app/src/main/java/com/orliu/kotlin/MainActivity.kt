@@ -5,11 +5,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.orliu.kotlin.base.BaseActivity
 import com.orliu.kotlin.common.extension.android.startActivity
+import com.orliu.kotlin.common.module.webview.CustomClientEngine
+import com.orliu.kotlin.common.module.webview.WebViewFragment
 import com.orliu.kotlin.common.view.rv.ItemViewDelegate
 import com.orliu.kotlin.common.view.rv.RecyclerAdapter
 import com.orliu.kotlin.common.view.rv.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity() {
     private lateinit var mAdapter: RecyclerAdapter<String>
@@ -31,8 +32,11 @@ class MainActivity : BaseActivity() {
         rv.adapter = mAdapter
         mAdapter.addItemViewDelegate(NormalItemViewDelegate())
 
+        val webView = WebViewFragment()
+                .url("file:///android_asset/test.html")
+                .engine(CustomClientEngine(this))
         supportFragmentManager.beginTransaction()
-                .add(R.id.container, TestFragment(), "asfa")
+                .add(R.id.container, webView, "asfa")
                 .commitAllowingStateLoss()
     }
 
