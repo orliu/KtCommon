@@ -1,19 +1,11 @@
 package com.orliu.kotlin
 
-import android.content.Intent
-import android.support.v7.widget.LinearLayoutManager
-import android.view.View
+import android.graphics.Color
 import com.orliu.kotlin.base.BaseActivity
-import com.orliu.kotlin.common.extension.android.startActivity
-import com.orliu.kotlin.common.module.webview.CustomClientEngine
-import com.orliu.kotlin.common.module.webview.WebViewFragment
-import com.orliu.kotlin.common.view.rv.ItemViewDelegate
-import com.orliu.kotlin.common.view.rv.RecyclerAdapter
-import com.orliu.kotlin.common.view.rv.ViewHolder
+import com.orliu.kotlin.common.extension.android.setColorSpannableString
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
-    private lateinit var mAdapter: RecyclerAdapter<String>
 
     override fun getTitleStr(): String? = "Main Act"
 
@@ -26,39 +18,18 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initViewOnResume() {
-        val manager = LinearLayoutManager(this)
-        mAdapter = RecyclerAdapter(this)
-        rv.layoutManager = manager
-        rv.adapter = mAdapter
-        mAdapter.addItemViewDelegate(NormalItemViewDelegate())
-
-        val webView = WebViewFragment()
-                .url("file:///android_asset/test.html")
-                .engine(CustomClientEngine(this))
-        supportFragmentManager.beginTransaction()
-                .add(R.id.container, webView, "asfa")
-                .commitAllowingStateLoss()
+        val origin = "细心的读者可能已经注意到一个事实：习近平主席此前4场会晤的外国客人也都来自欧洲——法国总统马克龙、北欧和波罗的海国家议会领导人、英国前首相卡梅伦、英国首相特雷莎·梅。"
+        val map = hashMapOf<Int, IntArray>()
+        map[Color.BLACK] = intArrayOf(2, 4)
+        map[Color.RED] = intArrayOf(5, 7)
+        map[Color.YELLOW] = intArrayOf(8, 10)
+        map[Color.BLUE] = intArrayOf(10, 11)
+        map[Color.RED] = intArrayOf(13, origin.length)
+        id_tv.setColorSpannableString(origin,map)
     }
 
     override fun syncDataOnResume() {
-
-        val datas = arrayListOf<String>()
-        (0..50).forEach { datas.add(it.toString()) }
-        mAdapter.setData(datas)
     }
 
-    private class NormalItemViewDelegate : ItemViewDelegate<String> {
-        override fun getItemViewLayoutId() = R.layout.item_normal
-
-        override fun isForViewType(item: String, position: Int) = true
-
-        override fun convert(holder: ViewHolder, t: String, position: Int) {
-            holder.withView(R.id.tv).setText(t)
-
-            holder.itemView.setOnClickListener({
-            })
-        }
-
-    }
 
 }
