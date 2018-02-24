@@ -32,7 +32,7 @@ abstract class BaseActivity : LibBaseActivity() {
     /**
      * title text
      */
-    abstract fun getTitleStr(): String?
+    abstract fun getTitleStr(): String
 
     /**
      * activity anim

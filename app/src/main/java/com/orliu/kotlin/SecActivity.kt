@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_sec.*
  * 17/10/30 下午2:52.
  */
 class SecActivity : BaseActivity() {
-    override fun getTitleStr(): String? = "SecActivity Page"
+    override fun getTitleStr(): String = "SecActivity Page"
 
     private var key: String? = ""
     override fun getLayoutId(): Int = R.layout.activity_sec

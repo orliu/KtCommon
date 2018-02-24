@@ -1,22 +1,32 @@
 package com.orliu.kotlin.common.dialog
 
+import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
-import com.orliu.kotlin.common.base.BaseDialog
 
 /**
  * Created by liujianping on 18/01/2018.
  */
 object DialogUtils {
-    private val dialogs: ArrayList<BaseDialog> = arrayListOf()
+    private val dialogs: ArrayList<DialogFragment> = arrayListOf()
 
     @JvmStatic
     fun showLoading(manager: FragmentManager, loadingText: String) {
-        val dialog: BaseDialog = WindowLoadingDialog.instance(loadingText) as BaseDialog
+        val dialog = WindowLoadingDialog.instance(loadingText)
         showAllowingStateLoss(dialog, manager, "windowloadingdialog")
         dialogs.add(dialog)
     }
 
-    private fun showAllowingStateLoss(fragment: BaseDialog, manager: FragmentManager, tag: String) {
+    @JvmStatic
+    fun showBottom(manager: FragmentManager, layoutId: Int, widgets: IntArray, dialogClickListenerAdapter: DialogClickListenerAdapter) {
+        val dialog = BottomDialog.instance()
+                .setLayoutId(layoutId)
+                .setWidgets(widgets)
+                .setOnDialogClickListener(dialogClickListenerAdapter)
+        showAllowingStateLoss(dialog, manager, "bottomdialog")
+        dialogs.add(dialog)
+    }
+
+    private fun showAllowingStateLoss(fragment: DialogFragment, manager: FragmentManager, tag: String) {
         if (!fragment.isAdded) {
             val ft = manager.beginTransaction()
             ft.add(fragment, tag)

@@ -7,10 +7,23 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
+    <style name="StyleDialogBottom" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/DialogBottomToTopAnim</item>
+    </style>
+
+    <style name="DialogBottomToTopAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/bottom_view_enter</item>
+        <item name="android:windowExitAnimation">@anim/bottom_view_exit</item>
+    </style>
+
     <!--dialog anim-->
     <!--<style name="StyleDialogAnim" parent="android:Animation">-->
-        <!--<item name="android:windowEnterAnimation">@anim/anim_dialog_in</item>-->
-        <!--<item name="android:windowExitAnimation">@anim/anim_dialog_out</item>-->
+    <!--<item name="android:windowEnterAnimation">@anim/anim_dialog_in</item>-->
+    <!--<item name="android:windowExitAnimation">@anim/anim_dialog_out</item>-->
     <!--</style>-->
 
 </resources>
