@@ -8,9 +8,6 @@ import android.view.View
  * Created by liujianping on 31/01/2018.
  */
 
-// findView
-inline fun <reified T : View> FragmentActivity.findView(viewId: Int): T = findViewById(viewId)
-
 fun View.visible() {
     visibility = View.VISIBLE
 }
@@ -23,3 +20,20 @@ fun View.gone() {
     visibility = View.GONE
 }
 
+// findView
+inline fun <reified T : View> FragmentActivity.findView(viewId: Int): T = findViewById(viewId)
+
+/**
+ * 计算属性为GONE的View的size
+ * @param view
+ * @return int[]: width;height
+ */
+fun calcViewSizeForGone(view: View): IntArray {
+    val size = IntArray(2)
+    val width = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+    val height = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+    view.measure(width, height)
+    size[0] = view.measuredWidth
+    size[1] = view.measuredHeight
+    return size
+}

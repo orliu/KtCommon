@@ -1,11 +1,11 @@
 package com.orliu.kotlin
 
-import android.graphics.Color
 import com.orliu.kotlin.base.BaseActivity
-import com.orliu.kotlin.common.dialog.DialogClickListenerAdapter
-import com.orliu.kotlin.common.dialog.DialogUtils
-import com.orliu.kotlin.common.extension.android.setColorSpannableString
-import com.orliu.kotlin.common.extension.android.toastShort
+import com.orliu.kotlin.common.base.BaseResult
+import com.orliu.kotlin.net.NetObserver
+import com.orliu.kotlin.net.NetService
+import com.orliu.retrofit.NetClient
+import com.orliu.retrofit.extension.request
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
@@ -22,34 +22,42 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initViewOnResume() {
-        val origin = "细心的读者可能已经注意到一个事实：习近平主席此前4场会晤的外国客人也都来自欧洲——法国总统马克龙、北欧和波罗的海国家议会领导人、英国前首相卡梅伦、英国首相特雷莎·梅。"
-        val map = hashMapOf<Int, IntArray>()
-        map[Color.BLACK] = intArrayOf(2, 4)
-        map[Color.RED] = intArrayOf(5, 7)
-        map[Color.YELLOW] = intArrayOf(8, 10)
-        map[Color.BLUE] = intArrayOf(10, 11)
-        map[Color.RED] = intArrayOf(13, origin.length)
-        id_tv.setColorSpannableString(origin, map)
+
+        NetClient.baseUrl("http://baidu.com")
+                .create(NetService::class.java)
+                .getOriginalString("http://baidu.com")
+                .request(object : NetObserver<String>() {
+
+                    override fun onSuccess(t: String) {
+                        id_tv.text= t
+                    }
+
+                    override fun onError(error: BaseResult<*>) {
+
+                        id_tv.text = error.msg
+                    }
+                })
+
 
         id_btn.onClick {
-            DialogUtils.showBottom(supportFragmentManager,
-                    R.layout.bottom_test,
-                    intArrayOf(R.id.id_test1, R.id.id_test3),
-                    object : DialogClickListenerAdapter() {
-                        override fun onBottomViewClick(widgetId: Int) {
-                            when (widgetId) {
-                                R.id.id_test1 -> toastShort("test 1")
-                                R.id.id_test3 -> toastShort("test 3")
-                                else -> Unit
-                            }
+            NetClient.baseUrl("http://www.123.com")
+                    .connectTimeout(100)
+                    .readTimeout(10)
+                    .create(NetService::class.java)
+                    .getOriginalString("http://www.163.com")
+                    .request(object:NetObserver<String>(){
+                        override fun onSuccess(t: String) {
+                           id_tv.text = t
+                        }
+
+                        override fun onError(error: BaseResult<*>) {
+                            id_tv.text = error.msg
                         }
                     })
-
         }
     }
 
     override fun syncDataOnResume() {
     }
-
 
 }

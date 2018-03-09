@@ -35,8 +35,10 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
+    implementation project(':lib_retrofit')
     implementation project(':lib_common_kt')
     implementation project(':lib_log')
+
 }
 repositories {
     mavenCentral()

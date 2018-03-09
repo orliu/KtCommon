@@ -16,6 +16,8 @@ import android.telephony.TelephonyManager
 import android.text.TextUtils
 import android.view.inputmethod.InputMethodManager
 import java.lang.Exception
+import java.net.NetworkInterface
+import java.net.SocketException
 
 /**
  * 设备相关常用函数
@@ -219,7 +221,32 @@ fun Context.imei(): String {
  */
 @SuppressLint("MissingPermission")
 fun Context.macAddress(): String {
-    val wifiManager = this.getSystemService(Context.WIFI_SERVICE) as WifiManager
-    val wifiInfo = wifiManager.connectionInfo
-    return wifiInfo.macAddress ?: ""
+//    val wifiManager = this.getSystemService(Context.WIFI_SERVICE) as WifiManager
+//    val wifiInfo = wifiManager.connectionInfo
+//    return wifiInfo.macAddress ?: ""
+    var macAddress: String? = null
+    val buf = StringBuffer()
+    var networkInterface: NetworkInterface? = null
+    try {
+        networkInterface = NetworkInterface.getByName("eth1")
+        if (networkInterface == null) {
+            networkInterface = NetworkInterface.getByName("wlan0")
+        }
+        if (networkInterface == null) {
+            return "02:00:00:00:00:02"
+        }
+        val addr = networkInterface?.hardwareAddress
+        for (b in addr) {
+            buf.append(String.format("%02X:", b))
+        }
+        if (buf.isNotEmpty()) {
+            buf.deleteCharAt(buf.length - 1)
+        }
+        macAddress = buf.toString()
+    } catch (e: SocketException) {
+        e.printStackTrace()
+        return "02:00:00:00:00:02"
+    }
+
+    return macAddress
 }

@@ -16,7 +16,9 @@
 
     <Button
         android:id="@+id/id_btn"
+        android:layout_marginTop="@dimen/dp_44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="show bottom dialog"/>
+        android:text="time out"/>
+
 </LinearLayout>
