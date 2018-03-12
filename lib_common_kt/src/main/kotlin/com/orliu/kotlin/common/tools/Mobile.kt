@@ -21,7 +21,7 @@ import java.net.SocketException
 
 /**
  * 设备相关常用函数
- * Created by liujianping on 17/10/24.
+ * Created by orliu on 17/10/24.
  */
 //屏幕宽px
 fun Context.screenWidthPixels(): Int = this.resources.displayMetrics.widthPixels

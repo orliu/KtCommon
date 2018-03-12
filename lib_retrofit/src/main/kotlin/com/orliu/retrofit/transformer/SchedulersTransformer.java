@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /*
  * @description
- * @author Liujianping (liujianping@wecash.net)
+ * @author orliu
  * @version 1.0.0(2017/2/17)
  * 17/2/28 上午11:43
  *

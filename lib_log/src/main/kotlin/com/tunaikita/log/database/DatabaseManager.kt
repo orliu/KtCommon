@@ -7,7 +7,7 @@ import com.tunaikita.log.bean.HttpLog
 
 /**
  * sqlite管理
- * Created by liujianping on 17/11/29.
+ * Created by orliu on 17/11/29.
  */
 object DatabaseManager {
 

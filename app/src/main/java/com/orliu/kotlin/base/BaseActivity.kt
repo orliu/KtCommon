@@ -6,7 +6,7 @@ import com.orliu.kotlin.common.base.LibBaseActivity
 
 /**
  * @description desc
- * Created by liujianping
+ * Created by orliu
  * 17/10/30 下午3:04.
  */
 abstract class BaseActivity : LibBaseActivity() {

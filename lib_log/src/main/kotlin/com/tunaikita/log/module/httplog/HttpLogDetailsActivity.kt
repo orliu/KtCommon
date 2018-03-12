@@ -15,7 +15,7 @@ import java.util.*
 
 /**
  * HttpLog日志详情页
- * Created by liujianping on 17/11/30.
+ * Created by orliu on 17/11/30.
  */
 class HttpLogDetailsActivity : AppCompatActivity() {
 

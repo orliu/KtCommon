@@ -3,7 +3,7 @@ package com.tunaikita.log.bean
 import java.io.Serializable
 
 /**
- * Created by liujianping on 17/11/30.
+ * Created by orliu on 17/11/30.
  */
 
 data class Result<out T>(val errcode: Int,

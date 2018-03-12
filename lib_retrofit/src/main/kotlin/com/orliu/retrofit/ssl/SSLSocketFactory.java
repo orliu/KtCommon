@@ -11,7 +11,7 @@ import javax.net.ssl.X509TrustManager;
 
 /**
  * @description desc
- * Created by liujianping
+ * Created by orliu
  * 17/8/22 下午3:19.
  */
 public class SSLSocketFactory {

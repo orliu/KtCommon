@@ -1,9 +1,9 @@
-package com.orliu.kotlin.common.base
+package com.orliu.retrofit.observer
 
 import java.io.Serializable
 
 /**
- * Created by liujianping on 26/01/2018.
+ * Created by orliu on 26/01/2018.
  */
 data class BaseResult<T>(var errcode: Int,
                          var msg: String,

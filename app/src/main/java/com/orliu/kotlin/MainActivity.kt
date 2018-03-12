@@ -1,8 +1,8 @@
 package com.orliu.kotlin
 
 import com.orliu.kotlin.base.BaseActivity
-import com.orliu.kotlin.common.base.BaseResult
-import com.orliu.kotlin.net.NetObserver
+import com.orliu.retrofit.observer.BaseResult
+import com.orliu.retrofit.observer.NetObserver
 import com.orliu.kotlin.net.NetService
 import com.orliu.retrofit.NetClient
 import com.orliu.retrofit.extension.request
@@ -45,7 +45,7 @@ class MainActivity : BaseActivity() {
                     .readTimeout(10)
                     .create(NetService::class.java)
                     .getOriginalString("http://www.163.com")
-                    .request(object:NetObserver<String>(){
+                    .request(object: NetObserver<String>(){
                         override fun onSuccess(t: String) {
                            id_tv.text = t
                         }

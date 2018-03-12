@@ -6,7 +6,7 @@ import com.orliu.kotlin.common.tools.catchUncaughtException
 import com.tunaikita.log.LogSDK
 
 /**
- * Created by liujianping on 26/01/2018.
+ * Created by orliu on 26/01/2018.
  */
 class BaseApplication : LibBaseApplication() {
 

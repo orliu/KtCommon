@@ -5,7 +5,7 @@ import kotlinx.android.synthetic.main.activity_sec.*
 
 /**
  * @description desc
- * Created by liujianping
+ * Created by orliu
  * 17/10/30 下午2:52.
  */
 class SecActivity : BaseActivity() {

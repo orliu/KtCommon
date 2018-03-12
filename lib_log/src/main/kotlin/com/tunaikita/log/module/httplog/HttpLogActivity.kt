@@ -20,7 +20,7 @@ import java.util.*
 
 /**
  * HttpLog日志列表页
- * Created by liujianping on 17/11/30.
+ * Created by orliu on 17/11/30.
  */
 class HttpLogActivity : AppCompatActivity() {
 

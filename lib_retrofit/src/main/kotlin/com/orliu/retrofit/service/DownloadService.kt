@@ -10,7 +10,7 @@ import retrofit2.http.Streaming
 
 /**
  * 下载文件的Service
- * Created by liujianping on 09/03/2018.
+ * Created by orliu on 09/03/2018.
  */
 interface DownloadService {
 

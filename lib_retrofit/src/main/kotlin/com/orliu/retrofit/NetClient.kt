@@ -1,8 +1,10 @@
 package com.orliu.retrofit
 
 import android.util.Log
+import android.view.animation.BaseInterpolator
 import okhttp3.logging.HttpLoggingInterceptor
 import com.google.gson.GsonBuilder
+import com.orliu.retrofit.interceptor.BaseInterceptor
 import com.orliu.retrofit.ssl.SSLSocketFactory
 import com.orliuœ.retrofit.ssl.NullHostNameVerifer
 import okhttp3.Interceptor
@@ -15,7 +17,7 @@ import java.util.concurrent.TimeUnit
 
 
 /**
- * Created by liujianping on 09/03/2018.
+ * Created by orliu on 09/03/2018.
  */
 object NetClient {
     private val TAG = NetClient::class.java.name
@@ -81,8 +83,9 @@ object NetClient {
         okHttpBuilder.connectTimeout(mConnectTimtout, TimeUnit.MILLISECONDS)
         okHttpBuilder.writeTimeout(mWriteTimeout, TimeUnit.MILLISECONDS)
         okHttpBuilder.readTimeout(mReadTimeout, TimeUnit.MILLISECONDS)
-        mIntercepors.forEach { okHttpBuilder.addInterceptor(it) }
         okHttpBuilder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        okHttpBuilder.addInterceptor(BaseInterceptor())
+        mIntercepors.forEach { okHttpBuilder.addInterceptor(it) }
         if (isSupportSSL) {
             okHttpBuilder.sslSocketFactory(SSLSocketFactory.getSSLSocketFactory())
             okHttpBuilder.hostnameVerifier(NullHostNameVerifer())

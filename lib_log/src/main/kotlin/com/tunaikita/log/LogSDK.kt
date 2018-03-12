@@ -9,7 +9,7 @@ import com.tunaikita.log.module.toolview.ToolViewManager
 
 
 /**
- * Created by liujianping on 17/11/29.
+ * Created by orliu on 17/11/29.
  */
 object LogSDK {
 

@@ -1,13 +1,12 @@
-package com.orliu.kotlin.net
+package com.orliu.retrofit.observer
 
-import com.orliu.kotlin.common.base.BaseResult
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
 /**
- * Created by liujianping on 09/03/2018.
+ * Created by orliu on 09/03/2018.
  */
 abstract class NetObserver<T> : Observer<T> {
     override fun onComplete() {

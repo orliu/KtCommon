@@ -10,7 +10,7 @@ import java.io.IOException
 
 /**
  * 图片相关
- * Created by liujianping on 17/11/10.
+ * Created by orliu on 17/11/10.
  */
 
 /**

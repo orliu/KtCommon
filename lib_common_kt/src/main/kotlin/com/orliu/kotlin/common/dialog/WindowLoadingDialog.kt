@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.dialog_window_loading.*
 
 /**
  * window loading dialog
- * Created by liujianping on 18/01/2018.
+ * Created by orliu on 18/01/2018.
  */
 class WindowLoadingDialog : BaseDialog() {
     private var loadingText: String = "Loading..."

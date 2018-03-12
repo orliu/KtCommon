@@ -13,7 +13,7 @@ import org.jetbrains.anko.support.v4.find
 
 /**
  * 底部自定义布局弹窗
- * Created by liujianping on 2018/2/24.
+ * Created by orliu on 2018/2/24.
  */
 class BottomDialog : DialogFragment() {
 

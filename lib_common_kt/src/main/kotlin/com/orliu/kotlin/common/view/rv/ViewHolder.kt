@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 /**
- * Created by Orliu on 2016/10/13.
+ * Created by orliu on 2016/10/13.
  */
 
 class ViewHolder(private var mConvertView: View) : RecyclerView.ViewHolder(mConvertView) {

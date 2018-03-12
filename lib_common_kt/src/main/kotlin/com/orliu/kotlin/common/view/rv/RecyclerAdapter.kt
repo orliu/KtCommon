@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import java.util.*
 
 /**
- * Created by Orliu on 2016/10/13.
+ * Created by orliu on 2016/10/13.
  */
 
 open class RecyclerAdapter<T>(private var mContext: Context) : RecyclerView.Adapter<ViewHolder>() {

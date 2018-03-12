@@ -5,7 +5,7 @@ import android.view.View
 
 /**
  * View扩展函数
- * Created by liujianping on 31/01/2018.
+ * Created by orliu on 31/01/2018.
  */
 
 fun View.visible() {

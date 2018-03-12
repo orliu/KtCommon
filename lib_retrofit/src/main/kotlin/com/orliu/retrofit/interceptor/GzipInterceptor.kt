@@ -11,7 +11,7 @@ import java.io.IOException
 
 
 /**
- * Created by liujianping on 09/03/2018.
+ * Created by orliu on 09/03/2018.
  */
 class GzipInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {

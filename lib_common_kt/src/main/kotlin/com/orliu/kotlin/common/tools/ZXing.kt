@@ -11,7 +11,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 /**
  * ZXing图形码
  * compile 'com.google.zxing:core:3.3.1'
- * Created by liujianping on 30/01/2018.
+ * Created by orliu on 30/01/2018.
  */
 
 //  生成条形码

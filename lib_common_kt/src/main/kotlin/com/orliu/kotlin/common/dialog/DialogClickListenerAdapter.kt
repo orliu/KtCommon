@@ -1,7 +1,7 @@
 package com.orliu.kotlin.common.dialog
 
 /**
- * Created by liujianping on 2018/2/24.
+ * Created by orliu on 2018/2/24.
  */
 abstract class DialogClickListenerAdapter: DialogClickListener {
 

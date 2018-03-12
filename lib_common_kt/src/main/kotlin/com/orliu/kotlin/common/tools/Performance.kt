@@ -7,7 +7,7 @@ import java.io.StringWriter
 
 /**
  * app性能相关函数
- * Created by liujianping on 17/10/24.
+ * Created by orliu on 17/10/24.
  */
 //检测内容泄漏
 fun catchMemoryLeak() {

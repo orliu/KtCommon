@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_test.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
- * Created by liujianping on 31/01/2018.
+ * Created by orliu on 31/01/2018.
  */
 class TestFragment : Fragment() {
 

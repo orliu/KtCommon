@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity
 
 /**
  * @description desc
- * Created by liujianping
+ * Created by orliu
  * 17/10/30 下午1:45.
  */
 abstract class LibBaseActivity : FragmentActivity() {

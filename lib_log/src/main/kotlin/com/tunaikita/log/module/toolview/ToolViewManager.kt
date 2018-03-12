@@ -14,7 +14,7 @@ import com.tunaikita.log.module.httplog.HttpLogActivity
 
 /**
  * ToolView悬浮按钮管理
- * Created by liujianping on 17/11/29.
+ * Created by orliu on 17/11/29.
  */
 object ToolViewManager {
     private lateinit var wmParams: WindowManager.LayoutParams

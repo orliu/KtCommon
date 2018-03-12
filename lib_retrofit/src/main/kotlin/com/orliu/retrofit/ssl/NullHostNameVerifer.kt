@@ -5,7 +5,7 @@ import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLSession
 
 /**
- * Created by liujianping on 09/03/2018.
+ * Created by orliu on 09/03/2018.
  */
 class NullHostNameVerifer : HostnameVerifier{
 

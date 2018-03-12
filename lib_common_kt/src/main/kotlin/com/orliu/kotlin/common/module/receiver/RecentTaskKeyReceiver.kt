@@ -7,7 +7,7 @@ import android.content.Intent
 /**
  * 监听home键、recent task键
  * IntentFilter Action: Intent.ACTION_CLOSE_SYSTEM_DIALOGS
- * Created by liujianping on 07/02/2018.
+ * Created by orliu on 07/02/2018.
  */
 class RecentTaskKeyReceiver : BroadcastReceiver() {
 

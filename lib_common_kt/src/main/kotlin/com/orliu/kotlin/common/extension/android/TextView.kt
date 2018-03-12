@@ -8,7 +8,7 @@ import android.widget.TextView
 
 /**
  * TextView扩展函数
- * Created by liujianping on 10/02/2018.
+ * Created by orliu on 10/02/2018.
  */
 
 

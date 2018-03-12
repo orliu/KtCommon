@@ -4,7 +4,7 @@ import android.app.Application
 import com.orliu.kotlin.common.tools.isMyProcess
 
 /**
- * Created by apple on 17/10/24.
+ * Created by orliu on 17/10/24.
  */
 open abstract class LibBaseApplication : Application() {
 

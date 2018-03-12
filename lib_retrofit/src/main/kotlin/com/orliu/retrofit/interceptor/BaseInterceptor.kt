@@ -4,13 +4,12 @@ import okhttp3.Interceptor
 import okhttp3.Response
 
 /**
- * Created by liujianping on 09/03/2018.
+ * Created by orliu on 09/03/2018.
  */
 class BaseInterceptor : Interceptor {
 
     private var mHeaders: HashMap<String, String>? = null
 
-    fun BaseInterceptor() {}
 
     fun BaseInterceptor(addHeaders: HashMap<String, String>) {
         mHeaders = addHeaders

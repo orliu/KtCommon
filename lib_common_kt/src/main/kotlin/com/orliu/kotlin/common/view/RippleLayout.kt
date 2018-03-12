@@ -11,7 +11,7 @@ import org.jetbrains.anko.backgroundDrawable
  * RippleLayout: it's working when the sdk code above LOLLIPOP
  *
  * e.g: <RippleLayout....android:id="@+id/rippleLayout">.......</RippleLayout>
- * Created by liujianping on 17/12/6.
+ * Created by orliu on 17/12/6.
  */
 class RippleLayout : RelativeLayout {
 

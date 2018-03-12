@@ -8,7 +8,7 @@ import com.tunaikita.log.R
 
 /**
  * Tool view
- * Created by liujianping on 17/11/29.
+ * Created by orliu on 17/11/29.
  */
 class ToolView : RelativeLayout {
 

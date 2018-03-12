@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Url
 
 /**
- * Created by liujianping on 09/03/2018.
+ * Created by orliu on 09/03/2018.
  */
 interface NetService {
 

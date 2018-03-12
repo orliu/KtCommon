@@ -14,7 +14,7 @@ import com.orliu.kotlin.common.R
 import com.orliu.kotlin.common.tools.screenWidthPixels
 
 /**
- * Created by liujianping on 17/11/15.
+ * Created by orliu on 17/11/15.
  */
 abstract class BaseDialog : DialogFragment(), DialogInterface.OnKeyListener {
 

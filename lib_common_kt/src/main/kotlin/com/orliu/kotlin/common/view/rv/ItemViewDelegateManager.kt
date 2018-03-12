@@ -3,7 +3,7 @@ package com.orliu.kotlin.common.view.rv
 import android.support.v4.util.SparseArrayCompat
 
 /**
- * Created by liujianping on 29/01/2018.
+ * Created by orliu on 29/01/2018.
  */
 class ItemViewDelegateManager<T> {
     private val delegates = SparseArrayCompat<ItemViewDelegate<T>>()

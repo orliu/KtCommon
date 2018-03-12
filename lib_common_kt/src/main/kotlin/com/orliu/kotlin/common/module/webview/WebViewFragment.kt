@@ -19,7 +19,7 @@ import org.jetbrains.anko.support.v4.find
 
 /**
  * @description desc
- * Created by liujianping
+ * Created by orliu
  * 17/10/27 下午1:51.
  */
 class WebViewFragment : DialogFragment() {

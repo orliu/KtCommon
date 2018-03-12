@@ -4,7 +4,7 @@ import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 
 /**
- * Created by liujianping on 18/01/2018.
+ * Created by orliu on 18/01/2018.
  */
 object DialogUtils {
     private val dialogs: ArrayList<DialogFragment> = arrayListOf()
