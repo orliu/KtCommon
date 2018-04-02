@@ -14,6 +14,7 @@ data class BaseResult<T>(var errcode: Int,
         const val EXCEPTION = -3
         const val HTTP_EXCEPTION = -2
         const val TIME_OUT = -1
+
         const val SERVER_SUCCESS = 0
         const val SERVER_TOKEN_MISSING = 11
         const val SERVER_TOKEN_EXPIRED = 12
@@ -40,7 +41,15 @@ data class BaseResult<T>(var errcode: Int,
 
         fun tokenMissing(): BaseResult<*> = BaseResult(SERVER_TOKEN_MISSING, "AccessToken params was missing", null)
         fun tokenExpired(): BaseResult<*> = BaseResult(SERVER_TOKEN_EXPIRED, "AccessToken expired", null)
-        fun unkownServerError(errcode: Int): BaseResult<*> = BaseResult(errcode, "unkown server error ($errcode)", "")
+        fun unkownServerError(errcode: Int, error: String): BaseResult<*> {
+            val msg = if (error.isEmpty()) {
+                "unkown server error"
+            } else {
+                error
+            }
+            return BaseResult(errcode, msg, "")
+        }
+
         fun originString(origin: String): BaseResult<String> = BaseResult(SERVER_SUCCESS, "", origin)
     }
 }

@@ -6,36 +6,19 @@ import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
 /**
- * Created by orliu on 09/03/2018.
+ * Observer
+ * Created by liujianping on 19/01/2018.
  */
 abstract class NetObserver<T> : Observer<T> {
-    override fun onComplete() {
-
-    }
 
     override fun onSubscribe(d: Disposable?) {
     }
 
-    override fun onNext(value: T) {
-        if (value is String) {
-            onSuccess(value)
-        } else if (value is BaseResult<*>) {
-            when (value.errcode) {
-
-                BaseResult.SERVER_SUCCESS -> onSuccess(value)
-                BaseResult.SERVER_TOKEN_MISSING,
-                BaseResult.SERVER_TOKEN_EXPIRED -> {
-                    // logout and target to login activity
-                }
-                else -> onError(BaseResult.unkownServerError(value.errcode))
-            }
-        }
+    override fun onComplete() {
     }
 
-    abstract fun onSuccess(t : T)
-
-    override fun onError(e: Throwable?) {
-        e?.let {
+    override fun onError(throwable: Throwable?) {
+        throwable?.let {
             when (it) {
                 is SocketTimeoutException -> onError(BaseResult.timeout())
                 is HttpException -> onError(BaseResult.httpException(it.message))
@@ -45,5 +28,25 @@ abstract class NetObserver<T> : Observer<T> {
         }
     }
 
+    override fun onNext(value: T) {
+        value?.let {
+
+            if (it is String) {
+                onSuccess(value)
+            } else if (it is BaseResult<*>) {
+                when (it.errcode) {
+
+                    BaseResult.SERVER_SUCCESS -> onSuccess(value)
+                    BaseResult.SERVER_TOKEN_MISSING,
+                    BaseResult.SERVER_TOKEN_EXPIRED -> {
+                        // logout and target to login activity
+                    }
+                    else -> onError(BaseResult.unkownServerError(it.errcode, it.msg))
+                }
+            }
+        }
+    }
+
+    abstract fun onSuccess(it: T)
     abstract fun onError(error: BaseResult<*>)
 }
