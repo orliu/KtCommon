@@ -1,5 +1,6 @@
 package com.orliu.retrofit.observer
 
+import com.orliu.kotlin.common.base.BaseResult
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import retrofit2.HttpException

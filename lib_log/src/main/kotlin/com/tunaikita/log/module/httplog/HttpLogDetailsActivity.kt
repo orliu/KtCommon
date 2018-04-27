@@ -3,11 +3,11 @@ package com.tunaikita.log.module.httplog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.gson.Gson
+import com.orliu.kotlin.common.base.BaseResult
 import com.orliu.kotlin.common.extension.other.parseJson
 import com.orliu.kotlin.common.tools.Logger
 import com.tunaikita.log.R
 import com.tunaikita.log.bean.HttpLog
-import com.tunaikita.log.bean.Result
 import kotlinx.android.synthetic.main.activity_httplog_details.*
 import org.jetbrains.anko.textColor
 import java.text.SimpleDateFormat
@@ -51,9 +51,9 @@ class HttpLogDetailsActivity : AppCompatActivity() {
                     .append("response: ").append(responseJson)
             id_httplog_details.text = sb.toString()
 
-            val result: Result<*> = Gson().parseJson(responseJson)
+            val result: BaseResult<*> = Gson().parseJson(responseJson)
             when (result.errcode) {
-                Result.SUCCESS -> {
+                BaseResult.SERVER_SUCCESS -> {
                     if (useTimes >= 500) {
                         id_httplog_details.textColor = resources.getColor(android.R.color.holo_orange_dark)
                     } else {

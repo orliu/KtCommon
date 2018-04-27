@@ -8,17 +8,18 @@
 
     <TextView
         android:id="@+id/id_tv"
-        android:textSize="@dimen/font_20"
-        android:lineSpacingExtra="@dimen/dp_8"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:lineSpacingExtra="@dimen/dp_8"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_height="200dp" />
+        android:textSize="@dimen/font_20" />
 
     <Button
         android:id="@+id/id_btn"
-        android:layout_marginTop="@dimen/dp_44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="time out"/>
+        android:layout_marginTop="@dimen/dp_44"
+        android:text="time out" />
+
 
 </LinearLayout>

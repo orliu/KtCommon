@@ -1,1 +1,1 @@
-include ':app', ':lib_common_kt', ':lib_log', ':lib_retrofit'
+include ':app',':app_base', ':lib_base', ':lib_log', ':lib_retrofit', ':lib_amap'

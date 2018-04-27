@@ -1,13 +1,15 @@
 package com.orliu.kotlin
 
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import com.orliu.amap.search.AMapSearchActivity
 import com.orliu.kotlin.base.BaseActivity
-import com.orliu.retrofit.observer.BaseResult
-import com.orliu.retrofit.observer.NetObserver
-import com.orliu.kotlin.net.NetService
-import com.orliu.retrofit.NetClient
-import com.orliu.retrofit.extension.request
+import com.orliu.kotlin.common.extension.android.toastShort
+import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+
 
 class MainActivity : BaseActivity() {
 
@@ -21,43 +23,40 @@ class MainActivity : BaseActivity() {
     override fun initDataOnStart() {
     }
 
+    private var index = 0
+
     override fun initViewOnResume() {
 
-        NetClient.baseUrl("http://baidu.com")
-                .create(NetService::class.java)
-                .getOriginalString("http://baidu.com")
-                .request(object : NetObserver<String>() {
-
-                    override fun onSuccess(t: String) {
-                        id_tv.text= t
-                    }
-
-                    override fun onError(error: BaseResult<*>) {
-
-                        id_tv.text = error.msg
-                    }
-                })
-
-
         id_btn.onClick {
-            NetClient.baseUrl("http://www.123.com")
-                    .connectTimeout(100)
-                    .readTimeout(10)
-                    .create(NetService::class.java)
-                    .getOriginalString("http://www.163.com")
-                    .request(object: NetObserver<String>(){
-                        override fun onSuccess(t: String) {
-                           id_tv.text = t
-                        }
 
-                        override fun onError(error: BaseResult<*>) {
-                            id_tv.text = error.msg
+            val permission = RxPermissions(this@MainActivity)
+            permission.request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    .subscribe { granted ->
+                        when (granted) {
+                            true -> AMapSearchActivity.startActivityForResult(this@MainActivity)
+                            false -> toastShort("need permission")
                         }
-                    })
+                    }
+
         }
+
+
     }
 
     override fun syncDataOnResume() {
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) return
+        when (requestCode) {
+            AMapSearchActivity.REQUEST_CODE -> {
+                val addressStr = data?.getStringExtra("addressStr")
+                id_tv.text = addressStr
+            }
+            else -> id_tv.text = "default"
+        }
     }
 
 }

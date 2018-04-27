@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -36,15 +36,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
 
+    compile project(':lib_base')
+
     compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
-    //compile "com.tbruyelle.rxpermissions2:rxpermissions:$rxpermissionVersion@aar"
+    compile "com.tbruyelle.rxpermissions2:rxpermissions:$rxpermissionVersion@aar"
     //compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingInterceptorVersion"
-
-    // kotlin
-    provided "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    provided "org.jetbrains.anko:anko:$anko_version"
 }

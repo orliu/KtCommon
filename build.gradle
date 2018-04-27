@@ -47,5 +47,7 @@ ext {
     retrofitVersion = '2.3.0'
     okhttpLoggingInterceptorVersion = '3.8.1'
 
+    rxpermissionVersion = '0.9.5'
+
     gsonVersion = '2.8.1'
 }

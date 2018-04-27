@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.orliu.amap">
+
+    <application
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".search.AMapSearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <!--TODO replace this value with self package keystore-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="d1248af621d805e21f659781c67aa287" />
+    </application>
+</manifest>

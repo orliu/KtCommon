@@ -5,13 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.google.gson.Gson
+import com.orliu.kotlin.common.base.BaseResult
 import com.orliu.kotlin.common.extension.other.parseJson
 import com.orliu.kotlin.common.view.rv.ItemViewDelegate
 import com.orliu.kotlin.common.view.rv.RecyclerAdapter
 import com.orliu.kotlin.common.view.rv.ViewHolder
 import com.tunaikita.log.R
 import com.tunaikita.log.bean.HttpLog
-import com.tunaikita.log.bean.Result
 import com.tunaikita.log.database.Database
 import kotlinx.android.synthetic.main.activity_httplog.*
 import org.jetbrains.anko.startActivity
@@ -75,9 +75,9 @@ class HttpLogActivity : AppCompatActivity() {
                     withView(R.id.id_httplog_use_time).setText(useTime)
                     withView(R.id.id_httplog_url).setText(requestUrl)
 
-                    val result : Result<*> = Gson().parseJson(it.responseJson)
+                    val result : BaseResult<*> = Gson().parseJson(it.responseJson)
                     var colorRes = when (result.errcode) {
-                        Result.SUCCESS -> {
+                        BaseResult.SERVER_SUCCESS -> {
                             if (it.useTimes >= 500) {
                                 resources.getColor(android.R.color.holo_orange_dark)
                             } else {
