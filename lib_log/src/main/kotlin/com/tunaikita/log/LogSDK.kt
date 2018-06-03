@@ -1,5 +1,6 @@
 package com.tunaikita.log
 
+import android.app.Activity
 import android.content.Context
 import com.orliu.kotlin.common.tools.Logger
 import com.tunaikita.log.bean.HttpLog
@@ -16,16 +17,18 @@ object LogSDK {
     private var open: Boolean = false
 
     @JvmStatic
-    fun init(context: Context, open: Boolean) {
+    fun init(activity: Activity, open: Boolean) {
+        if (activity == null || activity.isFinishing) return
+
         this.open = open
         when (open) {
 
             true -> {
                 // init view
-                ToolViewManager.initView(context)
+                ToolViewManager.initView(activity)
 
                 // init databse
-                DatabaseManager.initDatabase(context)
+                DatabaseManager.initDatabase(activity)
             }
             false -> Logger.e("LogSDK is not open")
         }
@@ -42,8 +45,8 @@ object LogSDK {
     @JvmStatic
     fun recordHttpLog(requestUrl: String,
                       requestMethod: String,
-                      requestParams: Map<String, Object>?,
-                      requestHeaders: Map<String, Object>?,
+                      requestParams: Map<String, Any>?,
+                      requestHeaders: Map<String, Any>?,
                       responseJson: String?,
                       requestTime: Long,
                       useTimes: Long) {

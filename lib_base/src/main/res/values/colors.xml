@@ -8,4 +8,11 @@
     <color name="common_black">#666666</color>
     <color name="common_divider">#d9d9d9</color>
     <color name="common_gray">#b4b4b4</color>
+
+    <color name="gray_background">#ececec</color>
+
+    <color name="black">#333333</color>
+    <color name="black_less">#6b6b6b</color>
+    <color name="black_desc">#ababab</color>
+    <color name="black_label">#333333</color>
 </resources>

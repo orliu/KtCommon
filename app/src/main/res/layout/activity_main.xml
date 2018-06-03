@@ -2,24 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray_background"
     android:orientation="vertical">
 
     <include layout="@layout/layout_navigation" />
 
-    <TextView
-        android:id="@+id/id_tv"
+    <Button
+        android:id="@+id/id_dialog"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:lineSpacingExtra="@dimen/dp_8"
+        android:text="Common Dialog"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/font_20" />
 
-    <Button
-        android:id="@+id/id_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_44"
-        android:text="time out" />
+    <com.orliu.kotlin.common.view.rv.RecyclerViewLayout
+        android:id="@+id/id_rv_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

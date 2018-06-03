@@ -12,9 +12,9 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 
 import com.amap.api.services.help.Tip;
-import com.orliu.amap.adapter.ItemViewDelegate;
-import com.orliu.amap.adapter.RecyclerAdapter;
-import com.orliu.amap.adapter.ViewHolder;
+import com.orliu.kotlin.common.view.rv.ItemViewDelegate;
+import com.orliu.kotlin.common.view.rv.RecyclerAdapter;
+import com.orliu.kotlin.common.view.rv.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class LocationInputDropDownPupup extends CardView {
     private RecyclerView mRv;
     private RecyclerAdapter<Tip> mAdapter;
     private LinearLayoutManager mLayoutManager;
-    private List<Tip> mTips;
+    private ArrayList<Tip> mTips;
     private IAdapterListener<Tip> mItemClickListener;
 
     public void setOnItemClickListener(IAdapterListener<Tip> itemClickListener) {
@@ -69,7 +69,7 @@ public class LocationInputDropDownPupup extends CardView {
         mRv.setAdapter(mAdapter);
     }
 
-    public void setTips(List<Tip> tips) {
+    public void setTips(ArrayList<Tip> tips) {
         this.mTips = tips;
         mAdapter.setData(mTips);
     }

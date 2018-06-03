@@ -1,6 +1,5 @@
 package com.orliu.kotlin.common.base
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 
@@ -16,7 +15,8 @@ abstract class LibBaseActivity : FragmentActivity() {
 
         setContentView(getLayoutId())
         overridePendingTransition()
-        initBundleArgs()
+        initDataOnCreate()
+        initView()
     }
 
 
@@ -29,8 +29,7 @@ abstract class LibBaseActivity : FragmentActivity() {
     override fun onResume() {
         super.onResume()
 
-        initViewOnResume()
-        syncDataOnResume()
+        initDataOnResume()
     }
 
     /**
@@ -41,28 +40,22 @@ abstract class LibBaseActivity : FragmentActivity() {
     /**
      * init intent's args
      */
-    abstract fun initBundleArgs()
-
-    /**
-     * init intent's args of url
-     */
-    fun initBundleArgs(url: String?) {}
-
-    /**
-     * init local data
-     */
-    abstract fun initDataOnStart()
+    open fun initDataOnCreate(){}
 
     /**
      * ui's operation
      */
-    abstract fun initViewOnResume()
+    abstract fun initView()
+
+    /**
+     * init local data
+     */
+    open fun initDataOnStart(){}
 
     /**
      * init online data
      */
-    abstract fun syncDataOnResume()
-
+    abstract fun initDataOnResume()
 
     /**
      * activity anim

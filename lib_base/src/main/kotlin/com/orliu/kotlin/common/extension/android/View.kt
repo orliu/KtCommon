@@ -20,9 +20,6 @@ fun View.gone() {
     visibility = View.GONE
 }
 
-// findView
-inline fun <reified T : View> FragmentActivity.findView(viewId: Int): T = findViewById(viewId)
-
 /**
  * 计算属性为GONE的View的size
  * @param view

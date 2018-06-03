@@ -20,7 +20,7 @@ class BaseApplication : LibBaseApplication() {
     }
 
     override fun initSocialSDK() {
-        LogSDK.init(this, true)
+        //LogSDK.init(this, true)
     }
 
 }

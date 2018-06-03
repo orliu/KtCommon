@@ -1,62 +1,83 @@
 package com.orliu.kotlin
 
-import android.Manifest
-import android.app.Activity
-import android.content.Intent
-import com.orliu.amap.search.AMapSearchActivity
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import com.orliu.kotlin.base.BaseActivity
-import com.orliu.kotlin.common.extension.android.toastShort
-import com.tbruyelle.rxpermissions2.RxPermissions
+import com.orliu.kotlin.common.dialog.CommonDialog
+import com.orliu.kotlin.common.view.rv.ItemViewDelegate
+import com.orliu.kotlin.common.view.rv.RecyclerViewLayout
+import com.orliu.kotlin.common.view.rv.ViewHolder
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener {
 
-    override fun getTitleStr(): String = "Main Act"
+    override fun getTitleStr() = "1231231"
 
-    override fun getLayoutId(): Int = R.layout.activity_main
+    override fun getLayoutId() = R.layout.activity_main
 
-    override fun initBundleArgs() {
+    override fun initDataOnCreate() {
+
     }
 
-    override fun initDataOnStart() {
-    }
+    override fun initView() {
 
-    private var index = 0
-
-    override fun initViewOnResume() {
-
-        id_btn.onClick {
-
-            val permission = RxPermissions(this@MainActivity)
-            permission.request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    .subscribe { granted ->
-                        when (granted) {
-                            true -> AMapSearchActivity.startActivityForResult(this@MainActivity)
-                            false -> toastShort("need permission")
+        id_dialog.onClick {
+            CommonDialog.newInstance()
+                    .setArguments("刷新数据")
+                    .setOnClickListener(object : CommonDialog.OnClickListenerAdapter() {
+                        override fun onConfirm() {
+                            loadData()
                         }
-                    }
-
-        }
-
-
-    }
-
-    override fun syncDataOnResume() {
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode != Activity.RESULT_OK) return
-        when (requestCode) {
-            AMapSearchActivity.REQUEST_CODE -> {
-                val addressStr = data?.getStringExtra("addressStr")
-                id_tv.text = addressStr
-            }
-            else -> id_tv.text = "default"
+                    }).show(supportFragmentManager, "")
         }
     }
 
+    override fun initDataOnResume() {
+    }
+
+    fun loadData() {
+
+        val layout = findViewById<RecyclerViewLayout<Int>>(R.id.id_rv_layout)
+        with(layout) {
+            setOnRefreshListener(this@MainActivity)
+            setOnLoadMoreListener(this@MainActivity)
+            setLayoutManager(GridLayoutManager(this@MainActivity, 3))
+            addItemViewDelegate(ItemN(), ItemN2())
+
+            val list = arrayListOf<Int>()
+            (0..8).forEach { list.add(it) }
+            setData(list)
+        }
+    }
+
+    override fun onRefresh(refreshLayout: RefreshLayout) {
+    }
+
+    override fun onLoadMore(refreshLayout: RefreshLayout) {
+    }
+
+    private class ItemN : ItemViewDelegate<Int> {
+        override fun getItemViewLayoutId() = R.layout.item_normal
+
+        override fun isForViewType(item: Int, position: Int) = item % 3 == 0
+
+        override fun convert(holder: ViewHolder, item: Int, position: Int) {
+            holder.withView(R.id.tv).setText(item.toString())
+        }
+    }
+
+    private class ItemN2 : ItemViewDelegate<Int> {
+        override fun getItemViewLayoutId() = R.layout.item_normal_2
+
+        override fun isForViewType(item: Int, position: Int) = item % 3 != 0
+
+        override fun convert(holder: ViewHolder, item: Int, position: Int) {
+            holder.withView(R.id.tv).setText(item.toString())
+        }
+    }
 }

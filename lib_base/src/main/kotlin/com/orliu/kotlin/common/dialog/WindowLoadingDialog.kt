@@ -1,8 +1,7 @@
 package com.orliu.kotlin.common.dialog
 
-import android.os.Bundle
 import com.orliu.kotlin.common.R
-import com.orliu.kotlin.common.base.BaseDialog
+import com.tunaikita.log.base.BaseDialog
 import kotlinx.android.synthetic.main.dialog_window_loading.*
 
 /**
@@ -15,12 +14,8 @@ class WindowLoadingDialog : BaseDialog() {
     companion object {
         @JvmStatic
         fun instance(): WindowLoadingDialog {
-            return Holder.instance
+            return WindowLoadingDialog()
         }
-    }
-
-    private object Holder {
-        val instance = WindowLoadingDialog()
     }
 
     fun setLoadingText(loadingText: String){
@@ -28,12 +23,6 @@ class WindowLoadingDialog : BaseDialog() {
     }
 
     override fun getLayoutId() = R.layout.dialog_window_loading
-
-    override fun initArguments() {
-        arguments?.let {
-            loadingText = it["loading"].toString()
-        }
-    }
 
     override fun initView() {
         if (loadingText.isNotEmpty()) id_dialog_loading.text = loadingText

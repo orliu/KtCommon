@@ -47,9 +47,9 @@ import com.amap.api.services.poisearch.PoiSearch;
 import com.orliu.amap.LocationInputDropDownPupup;
 import com.orliu.amap.IAdapterListener;
 import com.orliu.amap.R;
-import com.orliu.amap.adapter.ItemViewDelegate;
-import com.orliu.amap.adapter.RecyclerAdapter;
-import com.orliu.amap.adapter.ViewHolder;
+import com.orliu.kotlin.common.view.rv.ItemViewDelegate;
+import com.orliu.kotlin.common.view.rv.RecyclerAdapter;
+import com.orliu.kotlin.common.view.rv.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,8 +96,8 @@ public class AMapSearchActivity extends AppCompatActivity
     private PoiSearch poiSearch;
     private PoiSearch.Query poiSearchQuery;
     //private PoiItem firstPoiItem;
-    private List<PoiItem> poiItems;
-    private List<PoiItem> poiSearchResult;
+    private ArrayList<PoiItem> poiItems;
+    private ArrayList<PoiItem> poiSearchResult;
 
     public static void startActivityForResult(Activity activity) {
         Intent intent = new Intent(activity, AMapSearchActivity.class);
@@ -174,7 +174,10 @@ public class AMapSearchActivity extends AppCompatActivity
     @Override
     public void onGetInputtips(List<Tip> list, int rCode) {
         if (rCode == AMapException.CODE_AMAP_SUCCESS) {
-            showDropDownPopup(list);
+
+            ArrayList<Tip> arrys = new ArrayList<>();
+            arrys.addAll(list);
+            showDropDownPopup(arrys);
         } else {
             Log.e(TAG, "erroCode " + rCode);
         }
@@ -183,7 +186,7 @@ public class AMapSearchActivity extends AppCompatActivity
     /**
      * 下拉关键字结果
      */
-    private void showDropDownPopup(List<Tip> tips) {
+    private void showDropDownPopup(ArrayList<Tip> tips) {
         if (searchDropDownPopup == null) {
             searchDropDownPopup = new LocationInputDropDownPupup(this);
             searchDropDownPopup.setOnItemClickListener(new DropDownItemClickListener(tips));

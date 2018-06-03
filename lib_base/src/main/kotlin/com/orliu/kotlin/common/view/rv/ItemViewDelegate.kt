@@ -3,7 +3,7 @@ package com.orliu.kotlin.common.view.rv
 /**
  * Created by orliu on 29/01/2018.
  */
-interface ItemViewDelegate<T> {
+interface ItemViewDelegate<in T> {
 
     fun getItemViewLayoutId(): Int
     fun isForViewType(item: T, position: Int): Boolean

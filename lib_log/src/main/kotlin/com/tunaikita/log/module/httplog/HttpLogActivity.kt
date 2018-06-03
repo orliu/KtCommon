@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_httplog.*
 import org.jetbrains.anko.startActivity
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * HttpLog日志列表页
@@ -26,7 +27,7 @@ class HttpLogActivity : AppCompatActivity() {
 
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var adapter: RecyclerAdapter<HttpLog>
-    private var httplogs: ArrayList<HttpLog>? = null
+    private lateinit var httplogs: ArrayList<HttpLog>
 
     private val sdf: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
@@ -48,13 +49,14 @@ class HttpLogActivity : AppCompatActivity() {
 
         adapter = RecyclerAdapter(this)
         adapter.addItemViewDelegate(HttpLogItemViewDelegate())
+        httplogs = arrayListOf()
         adapter.setData(httplogs)
         id_httplog_rv.adapter = adapter
     }
 
     private fun initData() {
         httplogs = Database.getInstance().query(HttpLog::class.java)
-        Collections.reverse(httplogs)
+        httplogs.reverse()
         adapter.update(httplogs)
     }
 

@@ -12,7 +12,7 @@ class ItemViewDelegateManager<T> {
 
     fun addDelegate(delegate: ItemViewDelegate<T>): ItemViewDelegateManager<T> {
         var viewType = delegates.size()
-        viewType?.let {
+        if (delegate != null) {
             delegates.put(viewType, delegate)
             viewType++
         }
@@ -38,31 +38,33 @@ class ItemViewDelegateManager<T> {
     }
 
     fun removeDelegate(itemType: Int): ItemViewDelegateManager<T> {
-        val indexToRemove = delegates.indexOfKey(itemType);
-        if (indexToRemove >= 0) delegates.removeAt(indexToRemove);
+        val indexToRemove = delegates.indexOfKey(itemType)
+        if (indexToRemove >= 0) delegates.removeAt(indexToRemove)
         return this
     }
 
     fun getItemViewType(item: T, position: Int): Int {
         val delegatesCount = delegates.size()
-        (delegatesCount - 1..0).forEachIndexed { _, position ->
-            val delegate = delegates.valueAt(position)
+
+        (0 until delegatesCount).forEach {
+            val delegate = delegates.valueAt(it)
             if (delegate.isForViewType(item, position))
-                return delegates.keyAt(position)
+                return delegates.keyAt(it)
         }
-        throw IllegalArgumentException("No ItemViewDelegate added that matches position=$position in data source");
+        throw IllegalArgumentException("No ItemViewDelegate added that matches position=$position in data source")
+        return -1
     }
 
     fun convert(holder: ViewHolder, item: T, position: Int) {
         val delegatesCount = delegates.size()
-        (0 until delegatesCount).forEachIndexed { _, position ->
-            val delegate = delegates.valueAt(position)
+        (0 until delegatesCount).forEach {
+            val delegate = delegates.valueAt(it)
             if (delegate.isForViewType(item, position)) {
                 delegate.convert(holder, item, position)
                 return
             }
         }
-        throw  IllegalArgumentException("No ItemViewDelegateManager added that matches position=$position in data source");
+        throw  IllegalArgumentException("No ItemViewDelegateManager added that matches position=$position in data source")
     }
 
 
