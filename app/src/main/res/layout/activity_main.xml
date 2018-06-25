@@ -2,21 +2,66 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_background"
+    android:background="@color/layout_background"
     android:orientation="vertical">
 
     <include layout="@layout/layout_navigation" />
 
     <Button
-        android:id="@+id/id_dialog"
+        android:id="@+id/id_show_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="@dimen/dp_8"
-        android:text="Common Dialog"
+        android:text="show data"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/font_20" />
 
-    <com.orliu.kotlin.common.view.rv.RecyclerViewLayout
+    <Button
+        android:id="@+id/id_add_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp_8"
+        android:text="add data"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font_20" />
+
+    <Button
+        android:id="@+id/id_add_data_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp_8"
+        android:text="add data 2"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font_20" />
+
+    <Button
+        android:id="@+id/id_change_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp_8"
+        android:text="change data"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font_20" />
+
+    <Button
+        android:id="@+id/id_show_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp_8"
+        android:text="id_show_nodata"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font_20" />
+
+    <Button
+        android:id="@+id/id_show_nomoredata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp_8"
+        android:text="id_show_nomoredata"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font_20" />
+
+    <com.orliu.kotlin.common.view.rv.RecyclerLayout
         android:id="@+id/id_rv_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
