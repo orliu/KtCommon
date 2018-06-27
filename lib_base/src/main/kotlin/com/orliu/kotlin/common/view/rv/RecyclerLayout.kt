@@ -5,9 +5,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.RelativeLayout
 import com.orliu.kotlin.common.R
-import com.orliu.kotlin.common.R.id.*
 import com.orliu.kotlin.common.extension.android.gone
 import com.orliu.kotlin.common.extension.android.toastShort
 import com.orliu.kotlin.common.extension.android.visible
@@ -152,5 +152,12 @@ class RecyclerLayout<T> : RelativeLayout {
 
     fun hiddenLoading() {
         id_recycler_progress.gone()
+    }
+
+    fun setOnReloadListener(onClickListener: View.OnClickListener, clickMessage: String = "点击刷新"){
+        with(id_recycler_error){
+            text = text.toString().plus("\n").plus(clickMessage)
+            setOnClickListener(onClickListener)
+        }
     }
 }

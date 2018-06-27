@@ -1,8 +1,12 @@
 package com.orliu.kotlin
 
+import android.app.DatePickerDialog
+import android.app.ProgressDialog.show
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import com.orliu.kotlin.base.BaseActivity
 import com.orliu.kotlin.common.dialog.CommonDialog
+import com.orliu.kotlin.common.extension.android.toastShort
 import com.orliu.kotlin.common.view.rv.ItemViewDelegate
 import com.orliu.kotlin.common.view.rv.RecyclerLayout
 import com.orliu.kotlin.common.view.rv.ViewHolder
@@ -11,6 +15,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import java.util.*
 
 
 class MainActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener {
@@ -27,6 +32,15 @@ class MainActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener {
 
     override fun initView() {
 
+        id_datepicker.onClick {
+            val calendar = Calendar.getInstance();
+            val dialog = DatePickerDialog(this@MainActivity, R.style.StyleDatePickerDialog,
+                    DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                        toastShort("$year - $month - $dayOfMonth")
+                    }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+            dialog.show()
+        }
+
         id_show_data.onClick {
             CommonDialog.newInstance()
                     .setArguments("刷新数据")
@@ -38,7 +52,7 @@ class MainActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener {
         }
 
         id_add_data.onClick {
-            layout.addDatas(arrayListOf(11,22,333,44))
+            layout.addDatas(arrayListOf(11, 22, 333, 44))
         }
 
         id_add_data_2.onClick {
@@ -51,6 +65,7 @@ class MainActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener {
 
         id_show_nodata.onClick {
             layout.setErrorMessage("nonono data")
+            layout.setOnReloadListener(View.OnClickListener { toastShort("reload") }, "刷新数据刷新数据")
             layout.setData(arrayListOf())
         }
 

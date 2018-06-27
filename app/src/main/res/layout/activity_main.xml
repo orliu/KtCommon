@@ -8,6 +8,15 @@
     <include layout="@layout/layout_navigation" />
 
     <Button
+        android:id="@+id/id_datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp_8"
+        android:text="datepicker"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font_20" />
+
+    <Button
         android:id="@+id/id_show_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--notification text style-->
+    <style name="StyleNotificationInfo" parent="android:TextAppearance.Material.Notification.Info" />
+    <style name="StyleNotificationTitle" parent="android:TextAppearance.Material.Notification.Title" />
+
+    <!--DatePickerDialog theme-->
+    <style name="StyleDatePickerDialog" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:colorAccent">@color/colorPrimary</item>
+    </style>
+</resources>
